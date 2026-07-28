@@ -209,32 +209,40 @@
 </head>
 <body>
 
-    <!-- Header & Navigasi -->
     <header id="main-header">
-        <!-- LOGO -->
-        <a href="#" class="logo-link">
-            <img src="img/logo.gif" class="logo-image" alt="Logo FSP">
-        </a>
-        
-        <!-- Tombol Hamburger untuk Layar HP -->
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
+    <!-- LOGO -->
+    <a href="#" class="logo-link">
+        <img src="img/logo.gif" class="logo-image" alt="Logo FSP">
+    </a>
 
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="#beranda">Beranda</a></li>
-                <li><a href="#profil">Profil</a></li>
-                <li><a href="#kasus">Penanganan Kasus</a></li>
-                <li><a href="#pengurus">Pengurus</a></li>
-                <li><a href="#testimoni">Testimoni</a></li>
-                <li><a href="#berita">Berita</a></li>
-                <li><a href="#kontak">Kontak</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Judul -->
+    <h2 class="header-title">FSP ATTORNEY AT LAW</h2>
+
+    <!-- Tombol Hamburger -->
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <nav>
+        <ul id="nav-menu">
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#kasus">Penanganan Kasus</a></li>
+            <li><a href="#pengurus">Pengurus</a></li>
+            <li><a href="#testimoni">Testimoni</a></li>
+            <li><a href="#berita">Berita</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
 
     <!-- Hero / Slideshow -->
     <section id="beranda" class="hero">
@@ -242,10 +250,50 @@
         <div class="slides" style="background-image: url('img/slide1.jpg');"></div>
         <div class="slides" style="background-image: url('img/slide2.jpg');"></div>
         
-        <div class="hero-content fade-in">
-            <h1>FSP ATTORNEY AT LAW</h1>
-            <h2>Advocate & Financial Law Specialist</h2>
-        </div>
+		<style>
+		/* Hero */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero .slides{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity:0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero .slides.active{
+    opacity:1;
+}
+
+/* Tampilan HP */
+@media (max-width:768px){
+
+    .hero{
+        height:55vh; /* bisa diubah menjadi 60vh jika ingin lebih tinggi */
+    }
+
+    .hero .slides{
+        background-size: contain;     /* Menampilkan seluruh gambar */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color:#000;        /* Area kosong menjadi hitam */
+    }
+
+}
+</style>
+		
+		
     </section>
 
     <!-- Profil Section -->
@@ -257,7 +305,7 @@
             </div>
             <div class="profile-info fade-in delay-2">
                 <h3>Farhan Syathir S.H., M.H.</h3>
-                <p class="titles"></p>
+                <p class="titles">Managing Partner</p>
                 <p>Spesialis dalam hukum keuangan dan advokasi profesional. Kami berdedikasi untuk memberikan layanan hukum terbaik dengan standar etika tinggi, memastikan hak dan keadilan klien selalu menjadi prioritas utama.</p>
             </div>
         </div>
@@ -266,10 +314,12 @@
                 <img src="img/profil2.jpg" alt="Sendhy Pratama" style="width: 100%; border-radius: 8px; border: 2px solid var(--gold-dark);">
             </div>
             <div class="profile-info fade-in delay-2">
-                <h3>SENDHY PRATAMA</h3>
+                <h3>SENDHY PRATAMA S.H., M.H.</h3> <p class="titles"> Advocate & Financial Law Specialist</p>
                 <p class="titles">S.H., M.H., CPM., CCLE., CFTR., CPLA., CIRP., CIRM., CTMP., C.Neg</p>
                 <p>Spesialis dalam hukum keuangan dan advokasi profesional. Kami berdedikasi untuk memberikan layanan hukum terbaik dengan standar etika tinggi, memastikan hak dan keadilan klien selalu menjadi prioritas utama.</p>
-            </div>
+           
+			
+			</div>
         </div>
     </section>
 
@@ -297,17 +347,20 @@
         <h2 class="section-title fade-in">Susunan Pengurus</h2>
         <div class="grid-3">
             <div class="card fade-in delay-1">
-                <h3>Sendhy Pratama</h3>
+                <h3>Farhan Syathir S.H., M.H.</h3>
                 <p>Managing Partner / Founder</p>
             </div>
-            <div class="card fade-in delay-2">
-                <h3>Nama Pengurus 2</h3>
-                <p>Senior Associate</p>
+			
+            <div class="card fade-in delay-1">
+                <h3>Sendhy Pratama, S.H., M.H., CPM., CCLE., CFTR., CPLA., CIRP., CIRM., CTMP., C.Neg</h3>
+                <p>Partner</p>
+				
+				 <p>Advocate & Financial Law Specialist</p>
             </div>
-            <div class="card fade-in delay-3">
-                <h3>Nama Pengurus 3</h3>
-                <p>Legal Consultant</p>
-            </div>
+			
+			
+			
+          
         </div>
     </section>
 
@@ -342,17 +395,71 @@
             </video>
         </div>
     </section>
+ <p class="fade-in delay-1" style="text-align:center;margin-bottom:20px;">
+            kegiatan kami tahun 2025.
+        </p>
 
+        <div class="video-container fade-in delay-2" style="max-width:900px; margin:0 auto; border-radius:12px; background:#000;">
+            <video controls preload="metadata" playsinline width="100%" style="width:100%; height:auto; border-radius:12px;">
+                <source src="./vidio/hukum.mp4" type="video/mp4">
+                Browser Anda tidak mendukung HTML5 Video.
+            </video>
+        </div>
+    </section>
     <!-- Footer & Kontak -->
     <footer id="kontak" class="fade-in">
         <h2>FSP ATTORNEY AT LAW</h2>
         <div class="contact-info">
-            <span>📍 Ruko The Plaza Bukit Cimanggu City, Blok RKB No.6</span>
-            <span>Jl. Bukit Cimanggu City Raya, Kel. Cibadak, Kec. Tanah Sareal, Kota Bogor - 16166</span>
+           <div class="contact-address">
+    <a href="https://www.google.com/maps/search/?api=1&query=Ruko+The+Plaza+Bukit+Cimanggu+City+Blok+RKB+No.6,+Jl.+Bukit+Cimanggu+City+Raya,+Cibadak,+Tanah+Sareal,+Bogor+16166"
+       target="_blank"
+       style="text-decoration:none;color:inherit;">
+
+        <iframe
+            src="https://www.google.com/maps?q=Ruko+The+Plaza+Bukit+Cimanggu+City+Blok+RKB+No.6,+Jl.+Bukit+Cimanggu+City+Raya,+Cibadak,+Tanah+Sareal,+Bogor+16166&output=embed"
+            width="100%"
+            height="250"
+            style="border:0;border-radius:12px;margin-bottom:15px;"
+            loading="lazy">
+        </iframe>
+
+        <span>📍 Ruko The Plaza Bukit Cimanggu City, Blok RKB No.6</span>
+        <span>Jl. Bukit Cimanggu City Raya, Kel. Cibadak, Kec. Tanah Sareal, Kota Bogor - 16166</span>
+
+        
+
+    </a>
+</div>
             <span>
                 📞 <a href="https://wa.me/6281319999957?text=Halo%20FSP%20Attorney%20At%20Law,%20perkenalkan%20saya%20[Nama%20Anda].%20Saya%20membutuhkan%20bantuan%20hukum%20dan%20ingin%20menjadwalkan%20konsultasi%20dengan%20tim%20advokat." target="_blank" style="color: var(--gold-light); text-decoration: none; font-weight: bold;">+62 8131 99999 57</a>
             </span>
         </div>
+		
+		
+		<style>
+		.location-card{
+    background:#fff;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.location-card img:hover{
+    transform:scale(1.02);
+}
+
+.location-card .btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 25px;
+    border-radius:30px;
+    background:#198754;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+}
+</style>
         <p style="font-size: 0.8rem; color: #666;">&copy; 2026 FSP Attorney At Law. All Rights Reserved.</p>
     </footer>
 
@@ -413,16 +520,30 @@
     </script>
 
     <!-- SCRIPT UNTUK CRISP LIVE CHAT -->
-    <script type="text/javascript">
-        window.$crisp=[];
-        window.CRISP_WEBSITE_ID="MASUKKAN_WEBSITE_ID_CRISP_ANDA_DISINI"; 
-        (function(){
-            d=document;s=d.createElement("script");
-            s.src="https://client.crisp.chat/l.js";
-            s.async=1;
-            d.getElementsByTagName("head")[0].appendChild(s);
-        })();
-    </script>
+<script type="text/javascript">
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "b79964da-2254-4412-a202-73e5d549b247";
+
+    (function () {
+        var d = document;
+        var s = d.createElement("script");
+        s.src = "https://client.crisp.chat/l.js";
+        s.async = 1;
+        d.head.appendChild(s);
+    })();
+
+    // Tunggu widget selesai dimuat
+    var crispInterval = setInterval(function () {
+        var launcher = document.querySelector(".crisp-client .cc-1brb6");
+        if (launcher) {
+            clearInterval(crispInterval);
+
+            launcher.style.backgroundImage = "url('https://domainanda.com/logo-chat.png')";
+            launcher.style.backgroundSize = "cover";
+            launcher.style.backgroundPosition = "center";
+        }
+    }, 500);
+</script>
 
 </body>
 </html>
