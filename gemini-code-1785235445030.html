@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="id">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.50">
+    <title>FSP Attorney At Law</title>
+    <!-- Import Font Elegan -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Import FontAwesome untuk Icon Social Media -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Meta Tags untuk WhatsApp, Facebook, dan LinkedIn -->
+    <meta property="og:title" content="FSP Attorney At Law | Advocate & Financial Law Specialist" />
+    <meta property="og:description" content="Layanan hukum profesional, terpercaya, dan berintegritas. Kami siap mendampingi dan memberikan solusi terbaik untuk penyelesaian permasalahan hukum perusahaan, perbankan, dan pidana Anda." />
+    <meta property="og:url" content="https://1rumah.github.io/webasendhi/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://1rumah.github.io/webasendhi/share.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+
+    <!-- Meta Tags untuk Twitter / X -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="FSP Attorney At Law | Advocate & Financial Law Specialist" />
+    <meta name="twitter:description" content="Layanan hukum profesional, terpercaya, dan berintegritas. Kami siap mendampingi dan memberikan solusi terbaik untuk penyelesaian permasalahan hukum Anda." />
+    <meta name="twitter:image" content="https://1rumah.github.io/webasendhi/share.jpg" />
+
+   <style>
+        /* Variabel Warna */
+        :root {
+            --bg-color: #0d0d0d;
+            --gold-light: #f9d976;
+            --gold-dark: #c5a059;
+            --gold-gradient: linear-gradient(45deg, #c5a059, #f9d976, #c5a059);
+            --text-light: #e0e0e0;
+        }
+
+        /* Reset & Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            top: 0 !important; /* Mencegah offset dari Google Translate */
+        }
+        h1, h2, h3, .logo {
+            font-family: 'Cinzel', serif;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        /* Navigasi & Header */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(13, 13, 13, 0.95);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            border-bottom: 1px solid var(--gold-dark);
+            transition: all 0.4s ease;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background: #050505;
+            padding: 8px 50px;
+            width: 100%;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            gap: 25px;
+        }
+        .social-links a {
+            color: var(--text-light);
+            font-size: 18px;
+            margin-left: 12px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--gold-light);
+            transform: scale(1.1);
+        }
+        .language-selector select {
+            background: #111;
+            color: var(--gold-light);
+            border: 1px solid var(--gold-dark);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        /* Container Menu Utama */
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px 50px;
+            transition: all 0.4s ease;
+        }
+        
+        /* Header saat di-scroll */
+        header.scrolled {
+            background: rgba(5, 5, 5, 0.98);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        header.scrolled .header-main { padding: 10px 50px; }
+        header.scrolled .top-bar { display: none; }
+        
+        .logo-image { height: 50px; transition: height 0.4s ease; }
+        header.scrolled .logo-image { height: 40px; }
+        .logo { font-size: 24px; font-weight: 700; text-decoration: none; }
+        
+        nav ul { list-style: none; display: flex; gap: 20px; transition: all 0.3s ease; }
+        nav ul li a {
+            color: var(--gold-dark);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        nav ul li a:hover { color: var(--gold-light); text-shadow: 0 0 10px var(--gold-dark); }
+
+        /* Tombol Menu Mobile */
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .menu-toggle .bar { width: 30px; height: 3px; background-color: var(--gold-light); transition: 0.3s; }
+
+        /* Slideshow Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #000;
+            overflow: hidden;
+            margin-top: 80px; 
+        }
+        .slides {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; transition: opacity 1.5s ease-in-out, transform 5s linear;
+            background-size: cover; background-position: center;
+            transform: scale(1.05);
+        }
+        .slides.active { opacity: 0.4; transform: scale(1); } 
+        .hero-content { position: relative; z-index: 10; padding: 20px; }
+        .hero-content h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero-content h2 { font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 300; -webkit-text-fill-color: var(--gold-light); }
+
+        /* Sections General */
+        section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; overflow: hidden; }
+        .section-title { font-size: 2.5rem; margin-bottom: 40px; }
+        
+        /* Grid Layouts */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 40px;}
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        /* Cards */
+        .card {
+            background: #151515;
+            border: 1px solid var(--gold-dark);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2); }
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+
+        /* Profile Section */
+        .profile-info h3 { text-align: left; font-size: 2rem; margin-bottom: 10px; }
+        .profile-info p { margin-bottom: 15px; color: #ccc; }
+        .titles { color: var(--gold-light); font-weight: 600; font-size: 0.9rem; }
+
+        /* Video / Berita Embed */
+        .video-container {
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 800px; margin: 0 auto;
+            border: 2px solid var(--gold-dark); border-radius: 8px;
+        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* Animasi Scroll (Fade In & Slide Up) */
+        .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .fade-in.show { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.5s; }
+
+        /* Footer & Contact */
+        footer {
+            background: #050505; border-top: 1px solid var(--gold-dark); padding: 40px 20px; text-align: center; margin-top: 50px;
+        }
+        .contact-info { margin: 20px 0; font-size: 1.1rem; }
+        .contact-info span { color: var(--gold-light); display: block; margin: 10px 0; }
+
+        /* Sembunyikan Elemen Bawaan Google Translate */
+        .skiptranslate > iframe.skiptranslate { display: none !important; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+
+        /* Responsiveness & Mobile Menu */
+        @media (max-width: 768px) {
+            .top-bar { padding: 10px 20px; justify-content: space-between; }
+            .header-main, header.scrolled .header-main { padding: 15px 20px; }
+            .menu-toggle { display: flex; }
+            nav ul {
+                flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%;
+                background: rgba(13, 13, 13, 0.98); border-bottom: 1px solid var(--gold-dark);
+                max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; gap: 0;
+            }
+            nav ul.active { max-height: 400px; }
+            nav ul li { text-align: center; border-top: 1px solid rgba(197, 160, 89, 0.2); }
+            nav ul li a { display: block; padding: 15px; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero { margin-top: 100px; height: 55vh; }
+            .hero .slides { background-size: contain; background-color: #000; }
+        }
+    </style>
+</head>
+<body>
+
+<header id="main-header">
+    <div class="top-bar">
+        <!-- Logo Sosial Media -->
+        <div class="social-links">
+            <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+        
+        <!-- Pilihan Bahasa -->
+       
+    <select name="lang" id="lang-select" onchange="window.location.href=this.value;">
+        <option value="index.html">🇮🇩 Indonesia</option>
+        <option value="index2.html">🇬🇧 English</option>
+        <option value="index3.html">🇨🇳 中文 (China)</option>
+        <option value="Korea.html">🇰🇷 한국어 (Korea)</option>
+        <option value="Arab.html">🇸🇦 العربية (Arab)</option>
+    </select>
+</div>
+
+    <!-- MAIN HEADER -->
+    <div class="header-main">
+        <a href="#" class="logo-link">
+            <img src="img/logo.gif" class="logo-image" alt="Logo FSP">
+        </a>
+
+        <!-- Tambahan class 'notranslate' agar nama perusahaan tidak diterjemahkan otomatis -->
+        <h2 class="header-title notranslate">FSP ATTORNEY AT LAW</h2>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav>
+            <ul id="nav-menu">
+			    <li><a href="#Tentang Kami">Tentang Kami</a></li>
+                
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#kasus">Nilai & Penanganan</a></li>
+                <li><a href="#pengurus">Pengurus</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#berita">Berita</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+				
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Hero / Slideshow -->
+    <section id="beranda" class="hero">
+        <div class="slides active" style="background-image: url('img/Slide1.jpg');"></div>
+        <div class="slides" style="background-image: url('img/slide1.jpg');"></div>
+        <div class="slides" style="background-image: url('img/slide2.jpg');"></div>
+    </section>
+ <!-- Profil Section -->
+    <section id="Tentang Kami">
+        <h2 class="section-title fade-in">Tentang Kami</h2>
+        <div class="grid-2">
+            <div class="fade-in delay-1">
+                <img src="img/tentang.jpg" alt="Farhan Syathir" style="width: 100%; border-radius: 8px; border: 2px solid var(--gold-dark);">
+            </div>
+            <div class="profile-info fade-in delay-2">
+                <h3 class="notranslate">FSP ATTORNEY AT LAW</h3>
+                
+                <p>adalah kantor hukum yang menghadirkan layanan hukum profesional dengan pendekatan strategis, komprehensif, dan berorientasi pada solusi. Kami memahami bahwa setiap persoalan hukum bukan hanya tentang aturan dan prosedur, tetapi juga tentang menjaga reputasi, aset, keberlangsungan bisnis, dan kepentingan Klien.
+
+Didukung oleh tim yang solid, loyal, multidisiplin, dan berpengalaman, FSP ATTORNEY AT LAW berkomitmen memberikan pendampingan hukum terbaik dalam setiap proses penanganan perkara.
+
+Kami percaya bahwa keberhasilan penanganan hukum lahir dari kombinasi antara pengalaman, strategi yang tepat, integritas yang kuat, dan ketekunan dalam mengawal setiap proses hingga tuntas.</p>
+            </div>
+        </div>
+    <!-- Profil Section -->
+    <section id="profil">
+        <h2 class="section-title fade-in">Profil Advokat</h2>
+        <div class="grid-2">
+            <div class="fade-in delay-1">
+                <img src="img/profil.jpg" alt="Farhan Syathir" style="width: 100%; border-radius: 8px; border: 2px solid var(--gold-dark);">
+            </div>
+            <div class="profile-info fade-in delay-2">
+                <h3 class="notranslate">Farhan Syathir S.H., M.H.</h3>
+                <p class="titles">Managing Partner</p>
+                <p>Spesialis dalam hukum keuangan dan advokasi profesional. Kami berdedikasi untuk memberikan layanan hukum terbaik dengan standar etika tinggi, memastikan hak dan keadilan klien selalu menjadi prioritas utama.</p>
+            </div>
+        </div>
+         <div class="grid-2">
+            <div class="fade-in delay-1">
+                <img src="img/profil2.jpg" alt="Sendhy Pratama" style="width: 100%; border-radius: 8px; border: 2px solid var(--gold-dark);">
+            </div>
+            <div class="profile-info fade-in delay-2">
+                <h3 class="notranslate">SENDHY PRATAMA S.H., M.H.</h3> 
+                <p class="titles"> Advocate & Financial Law Specialist</p>
+                <p class="titles notranslate">S.H., M.H., CPM., CCLE., CFTR., CPLA., CIRP., CIRM., CTMP., C.Neg</p>
+                <p>Spesialis dalam hukum keuangan dan advokasi profesional. Kami berdedikasi untuk memberikan layanan hukum terbaik dengan standar etika tinggi, memastikan hak dan keadilan klien selalu menjadi prioritas utama.</p>
+			</div>
+        </div>
+    </section>
+
+    <!-- Penanganan Kasus -->
+    <section id="kasus">
+        <h2 class="section-title fade-in">Nilai & Penanganan</h2>
+        <div class="grid-3">
+            <div class="card fade-in delay-1">
+                <h3>Hukum Perusahaan</h3>
+                <p>Pendampingan legalitas, akuisisi, merger, dan penyelesaian sengketa perusahaan secara profesional.</p>
+            </div>
+            <div class="card fade-in delay-2">
+                <h3>Hukum Keuangan & Perbankan</h3>
+                <p>Spesialisasi dalam restrukturisasi utang, sengketa perbankan, dan investigasi keuangan.</p>
+            </div>
+            <div class="card fade-in delay-3">
+                <h3>Hukum Pidana Umum & Khusus</h3>
+                <p>Pendampingan klien dalam proses penyelidikan, penyidikan, hingga persidangan di pengadilan.</p>
+				 </div>
+				<div class="card fade-in delay-4">
+                <h3>Profesionalisme</h3>
+                <p>Bagi Kami, profesionalisme bukan hanya tentang kompetensi teknis, tetapi tentang standar kerja dengan etika yang dijunjung tinggi. Kami memberikan layanan hukum berkualitas premium, dengan pemahaman mendalam atas setiap detail perkara yang dipercayakan kepada Kami.</p>
+            </div>
+            <div class="card fade-in delay-5">
+                <h3>Integrity</h3>
+                <p>Integritas membentuk kepercayaan. Kami menjaga integritas, konsisten pada kejujuran, transparansi, dan objektivitas. Kami memastikan Klien mendapatkan jalan keluar yang tepat secara hukum dan etika. Kami menjaga integritas, menjaga kepentingan Klien dari masa ke masa.</p>
+            </div>
+            <div class="card fade-in delay-6">
+                <h3>Persistence</h3>
+                <p>Berperkara tentunya mengharuskan Klien menghadapi proses yang panjang dan rumit. Kami meyakini bahwa hasil yang dituju adalah lahir dari proses yang dijaga dan dikawal secara presisi. Kami menunjukkan kegigihan yang tak tergoyahkan dalam mengawal setiap kasus hingga tuntas, memastikan setiap hak klien terpenuhi dan setiap risiko termitigasi dengan maksimal.</p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Susunan Pengurus -->
+    <section id="pengurus">
+        <h2 class="section-title fade-in">Susunan Pengurus</h2>
+        <div class="grid-3">
+            <div class="card fade-in delay-1">
+                <h3 class="notranslate">Farhan Syathir S.H., M.H.</h3>
+                <p>Managing Partner / Founder</p>
+            </div>
+            <div class="card fade-in delay-1">
+                <h3 class="notranslate">Sendhy Pratama, S.H., M.H., CPM., CCLE., CFTR., CPLA., CIRP., CIRM., CTMP., C.Neg</h3>
+                <p>Partner</p>
+				<p>Advocate & Financial Law Specialist</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section id="testimoni">
+        <h2 class="section-title fade-in">Testimoni Klien</h2>
+        <div class="grid-3">
+            <div class="card fade-in delay-1">
+                <p><i>"Layanan yang sangat profesional dan solutif. Masalah hukum perusahaan kami terselesaikan dengan efektif."</i></p>
+                <br>
+                <h3 style="font-size: 1.1rem;" class="notranslate">- PT. Maju Bersama</h3>
+            </div>
+            <div class="card fade-in delay-2">
+                <p><i>"FSP Attorney At Law memberikan pendampingan yang luar biasa dalam sengketa keuangan kami."</i></p>
+                <br>
+                <h3 style="font-size: 1.1rem;" class="notranslate">- Bpk. Ahmad</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Berita & Informasi -->
+    <section id="berita">
+        <h2 class="section-title fade-in">Berita & Informasi</h2>
+        <p class="fade-in delay-1" style="text-align:center;margin-bottom:20px;">
+            Simak ulasan hukum terbaru dari kanal kami.
+        </p>
+        <div class="video-container fade-in delay-2" style="max-width:900px; margin:0 auto; border-radius:12px; background:#000;">
+            <video controls preload="metadata" playsinline width="100%" style="width:100%; height:auto; border-radius:12px;">
+                <source src="./vidio/hukum.mp4" type="video/mp4">
+                Browser Anda tidak mendukung HTML5 Video.
+            </video>
+        </div>
+        
+        <p class="fade-in delay-1" style="text-align:center; margin-bottom:20px; margin-top: 50px;">
+            Kegiatan kami tahun 2025.
+        </p>
+        <div class="video-container fade-in delay-2" style="max-width:900px; margin:0 auto; border-radius:12px; background:#000;">
+            <video controls preload="metadata" playsinline width="100%" style="width:100%; height:auto; border-radius:12px;">
+                <source src="./vidio/hukum.mp4" type="video/mp4">
+                Browser Anda tidak mendukung HTML5 Video.
+            </video>
+        </div>
+    </section>
+    
+    <!-- Footer & Kontak -->
+    <footer id="kontak" class="fade-in">
+        <h2 class="notranslate">FSP ATTORNEY AT LAW</h2>
+        <div class="contact-info">
+           <div class="contact-address">
+                <a href="https://www.google.com/maps/search/?api=1&query=Ruko+The+Plaza+Bukit+Cimanggu+City+Blok+RKB+No.6,+Jl.+Bukit+Cimanggu+City+Raya,+Cibadak,+Tanah+Sareal,+Bogor+16166" target="_blank" style="text-decoration:none;color:inherit;">
+                    <iframe
+                        src="https://www.google.com/maps?q=Ruko+The+Plaza+Bukit+Cimanggu+City+Blok+RKB+No.6,+Jl.+Bukit+Cimanggu+City+Raya,+Cibadak,+Tanah+Sareal,+Bogor+16166&output=embed"
+                        width="100%" height="250" style="border:0;border-radius:12px;margin-bottom:15px;" loading="lazy">
+                    </iframe>
+                    <span>📍 Ruko The Plaza Bukit Cimanggu City, Blok RKB No.6</span>
+                    <span>Jl. Bukit Cimanggu City Raya, Kel. Cibadak, Kec. Tanah Sareal, Kota Bogor - 16166</span>
+                </a>
+            </div>
+            <span>
+                📞 <a href="https://wa.me/6281319999957?text=Halo%20FSP%20Attorney%20At%20Law,%20perkenalkan%20saya%20[Nama%20Anda].%20Saya%20membutuhkan%20bantuan%20hukum%20dan%20ingin%20menjadwalkan%20konsultasi%20dengan%20tim%20advokat." target="_blank" style="color: var(--gold-light); text-decoration: none; font-weight: bold;">+62 8131 99999 57</a>
+            </span>
+        </div>
+        <p style="font-size: 0.8rem; color: #666;">&copy; 2026 <span class="notranslate">FSP Attorney At Law</span>. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ============================================== -->
+    <!-- WIDGET GOOGLE TRANSLATE (DISEMBUNYIKAN)        -->
+    <!-- ============================================== -->
+    <div id="google_translate_element" style="display:none;"></div>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'id', // Bahasa asli website
+                includedLanguages: 'id,en,zh-CN,ko,ar', // Bahasa yang didukung
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- JS untuk FUNGSI ANIMASI, MENU, TRANSLATE, & SLIDESHOW -->
+    <script>
+        // --- 1. SCRIPT UNTUK DROPDOWN BAHASA (MENGGUNAKAN COOKIE GOOGLE TRANSLATE) ---
+        
+        // Fungsi membaca cookie
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') { c = c.substring(1); }
+                if (c.indexOf(name) == 0) { return c.substring(name.length, c.length); }
+            }
+            return "";
+        }
+
+        // Setel posisi awal dropdown sesuai bahasa yang sedang aktif
+        let currentLangCookie = getCookie("googtrans");
+        let langSelect = document.getElementById('lang-select');
+        if(currentLangCookie != "") {
+            // Contoh isi cookie: "/id/en" -> kita ambil "en" nya
+            let langCode = currentLangCookie.split('/')[2];
+            if(langCode) { langSelect.value = langCode; }
+        }
+
+        // Event saat pengunjung memilih bahasa baru
+        langSelect.addEventListener('change', function() {
+            let lang = this.value;
+            let domain = window.location.hostname;
+            
+            // Hapus cookie terjemahan yang lama
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain;
+            
+            // Jika bukan kembali ke bahasa asli (Indonesia), set cookie baru
+            if (lang !== 'id') {
+                document.cookie = "googtrans=/id/" + lang + "; path=/";
+                if(domain !== "localhost" && domain !== "") {
+                    document.cookie = "googtrans=/id/" + lang + "; path=/; domain=" + domain;
+                }
+            }
+            // Reload halaman untuk memicu terjemahan otomatis dari Google
+            window.location.reload();
+        });
+
+
+        // --- 2. Script untuk Slideshow Hero ---
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slides');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000); 
+
+        // --- 3. Script untuk Header Mengecil & Scroll Animasi ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+            else { header.classList.remove('scrolled'); }
+        });
+
+        // --- 4. Script untuk Toggle Menu Mobile ---
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = navMenu.querySelectorAll('li a');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => { navMenu.classList.remove('active'); });
+        });
+
+        // --- 5. Script Animasi Fade-In & Slide-Up saat Scroll ---
+        const observerOptions = {
+            threshold: 0.15, 
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+
+    <!-- SCRIPT UNTUK CRISP LIVE CHAT -->
+    <script type="text/javascript">
+        window.$crisp = [];
+        window.CRISP_WEBSITE_ID = "b79964da-2254-4412-a202-73e5d549b247";
+
+        (function () {
+            var d = document;
+            var s = d.createElement("script");
+            s.src = "https://client.crisp.chat/l.js";
+            s.async = 1;
+            d.head.appendChild(s);
+        })();
+
+        var crispInterval = setInterval(function () {
+            var launcher = document.querySelector(".crisp-client .cc-1brb6");
+            if (launcher) {
+                clearInterval(crispInterval);
+                launcher.style.backgroundImage = "url('https://domainanda.com/logo-chat.png')";
+                launcher.style.backgroundSize = "cover";
+                launcher.style.backgroundPosition = "center";
+            }
+        }, 500);
+    </script>
+
+</body>
+</html>
