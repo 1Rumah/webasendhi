@@ -50,71 +50,61 @@
             text-align: center;
         }
 
-        /* Navigasi */
-       /* Style untuk Tombol Garis 3 (Disembunyikan di layar besar) */
+        /* --- Style Tombol Hamburger (Hanya tampil di HP) --- */
         .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
         }
-
         .menu-toggle .bar {
             width: 25px;
             height: 3px;
-            background-color: var(--gold-light);
-            transition: all 0.3s ease-in-out;
+            background-color: var(--gold-dark);
             border-radius: 3px;
+            transition: all 0.3s ease-in-out;
         }
 
-        /* Responsiveness & Mobile Menu */
+        /* --- Responsiveness untuk Layar HP / Mobile --- */
         @media (max-width: 768px) {
             header { 
+                flex-direction: row; /* Logo dan tombol sejajar kiri-kanan */
+                justify-content: space-between; 
                 padding: 15px 20px; 
-                flex-direction: row; /* Menjaga logo dan tombol tetap sejajar kiri-kanan */
+            }
+            .logo { 
+                font-size: 18px; /* Ukuran logo disesuaikan agar tidak kebesaran di HP */
+            }
+            .menu-toggle { 
+                display: flex; /* Tampilkan tombol garis tiga */
             }
             
-            .menu-toggle {
-                display: flex; /* Tampilkan garis 3 di HP */
-            }
-
-            nav ul {
-                position: absolute;
-                top: 65px; /* Jarak dari atas */
-                right: -100%; /* Sembunyikan menu di luar layar sebelah kanan */
-                width: 100%;
-                background: rgba(13, 13, 13, 0.98);
+            /* Modifikasi Menu List untuk HP */
+            nav ul { 
+                display: flex;
                 flex-direction: column;
-                text-align: center;
-                transition: right 0.4s ease;
-                padding: 20px 0;
+                position: absolute;
+                top: 60px; /* Muncul tepat di bawah header */
+                left: -100%; /* Sembunyikan di luar layar sebelah kiri secara default */
+                width: 100%;
+                background: rgba(13, 13, 13, 0.98); /* Background hitam transparan elegan */
                 border-bottom: 1px solid var(--gold-dark);
-            }
-
-            nav ul.active {
-                right: 0; /* Tarik menu ke dalam layar saat aktif */
-            }
-
-            nav ul li {
-                margin: 15px 0;
-            }
-
-            /* Efek Animasi Hamburger menjadi tanda Silang (X) saat diklik */
-            .menu-toggle.is-active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            .menu-toggle.is-active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            .menu-toggle.is-active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
+                text-align: center;
+                transition: 0.4s ease-in-out;
+                padding: 20px 0;
+                gap: 25px; /* Jarak antar menu agar lega dan tidak rapat (mudah di-tap) */
             }
             
-            /* Penyesuaian lain untuk mobile */
-            .grid-2 { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2rem; }
+            /* Class saat menu aktif (terbuka) */
+            nav ul.active { 
+                left: 0; 
+            }
+            
+            nav ul li a { 
+                display: block;
+                font-size: 16px; /* Ukuran font lebih proporsional untuk jari */
+            }
         }
-        
         .logo { font-size: 24px; font-weight: 700; text-decoration: none; }
         nav ul { list-style: none; display: flex; gap: 20px; }
         nav ul li a {
@@ -199,10 +189,10 @@
 <body>
 
     <!-- Header & Navigasi -->
-   <header>
-        <a href="#" class="logo">FSP ATTORNEY AT LAW</a>
+  <header>
+        <a href="#" class="logo">FSP ATTORNEY</a> <!-- Teks bisa dipersingkat sedikit agar pas di HP -->
         
-        <!-- Tombol Garis 3 (Hamburger Menu) -->
+        <!-- Tombol Hamburger untuk Layar HP -->
         <div class="menu-toggle" id="mobile-menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -210,7 +200,7 @@
         </div>
 
         <nav>
-            <ul class="nav-list">
+            <ul id="nav-menu">
                 <li><a href="#beranda">Beranda</a></li>
                 <li><a href="#profil">Profil</a></li>
                 <li><a href="#kasus">Penanganan Kasus</a></li>
@@ -370,6 +360,23 @@
             d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
+<!-- SCRIPT MENU HAMBURGER -->
+    <script>
+        const menuToggle = document.querySelector('#mobile-menu');
+        const navMenu = document.querySelector('#nav-menu');
+        const navLinks = document.querySelectorAll('#nav-menu li a');
 
+        // Fungsi membuka/menutup menu saat tombol garis tiga diklik
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Fungsi agar menu otomatis menutup sendiri saat salah satu link diklik
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
