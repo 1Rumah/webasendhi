@@ -2,17 +2,15 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.50">
     <title>FSP Attorney At Law</title>
     <!-- Import Font Elegan -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-
-	<!-- Meta Tags untuk WhatsApp, Facebook, dan LinkedIn -->
+   <!-- Meta Tags untuk WhatsApp, Facebook, dan LinkedIn -->
     <meta property="og:title" content="FSP Attorney At Law | Advocate & Financial Law Specialist" />
     <meta property="og:description" content="Layanan hukum profesional, terpercaya, dan berintegritas. Kami siap mendampingi dan memberikan solusi terbaik untuk penyelesaian permasalahan hukum perusahaan, perbankan, dan pidana Anda." />
     <meta property="og:url" content="https://1rumah.github.io/webasendhi/" />
     <meta property="og:type" content="website" />
-    <!-- Pastikan link gambar menggunakan URL absolut (lengkap) agar terbaca oleh WhatsApp -->
     <meta property="og:image" content="https://1rumah.github.io/webasendhi/share.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="600" />
@@ -23,7 +21,8 @@
     <meta name="twitter:title" content="FSP Attorney At Law | Advocate & Financial Law Specialist" />
     <meta name="twitter:description" content="Layanan hukum profesional, terpercaya, dan berintegritas. Kami siap mendampingi dan memberikan solusi terbaik untuk penyelesaian permasalahan hukum Anda." />
     <meta name="twitter:image" content="https://1rumah.github.io/webasendhi/share.jpg" />
-    <style>
+
+   <style>
         /* Variabel Warna */
         :root {
             --bg-color: #0d0d0d;
@@ -50,63 +49,36 @@
             text-align: center;
         }
 
-        /* --- Style Tombol Hamburger (Hanya tampil di HP) --- */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
+        /* Navigasi */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(13, 13, 13, 0.95);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--gold-dark);
+            transition: all 0.4s ease; /* Animasi mengecil */
         }
-        .menu-toggle .bar {
-            width: 25px;
-            height: 3px;
-            background-color: var(--gold-dark);
-            border-radius: 3px;
-            transition: all 0.3s ease-in-out;
+        /* Header saat di-scroll */
+        header.scrolled {
+            padding: 10px 50px;
+            background: rgba(5, 5, 5, 0.98);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        
+        .logo-image {
+            height: 50px;
+            transition: height 0.4s ease;
+        }
+        header.scrolled .logo-image {
+            height: 40px; /* Logo mengecil saat scroll */
         }
 
-        /* --- Responsiveness untuk Layar HP / Mobile --- */
-        @media (max-width: 768px) {
-            header { 
-                flex-direction: row; /* Logo dan tombol sejajar kiri-kanan */
-                justify-content: space-between; 
-                padding: 15px 20px; 
-            }
-            .logo { 
-                font-size: 18px; /* Ukuran logo disesuaikan agar tidak kebesaran di HP */
-            }
-            .menu-toggle { 
-                display: flex; /* Tampilkan tombol garis tiga */
-            }
-            
-            /* Modifikasi Menu List untuk HP */
-            nav ul { 
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 60px; /* Muncul tepat di bawah header */
-                left: -100%; /* Sembunyikan di luar layar sebelah kiri secara default */
-                width: 100%;
-                background: rgba(13, 13, 13, 0.98); /* Background hitam transparan elegan */
-                border-bottom: 1px solid var(--gold-dark);
-                text-align: center;
-                transition: 0.4s ease-in-out;
-                padding: 20px 0;
-                gap: 25px; /* Jarak antar menu agar lega dan tidak rapat (mudah di-tap) */
-            }
-            
-            /* Class saat menu aktif (terbuka) */
-            nav ul.active { 
-                left: 0; 
-            }
-            
-            nav ul li a { 
-                display: block;
-                font-size: 16px; /* Ukuran font lebih proporsional untuk jari */
-            }
-        }
         .logo { font-size: 24px; font-weight: 700; text-decoration: none; }
-        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav ul { list-style: none; display: flex; gap: 20px; transition: all 0.3s ease; }
         nav ul li a {
             color: var(--gold-dark);
             text-decoration: none;
@@ -116,6 +88,20 @@
             text-transform: uppercase;
         }
         nav ul li a:hover { color: var(--gold-light); text-shadow: 0 0 10px var(--gold-dark); }
+
+        /* Tombol Menu Mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .menu-toggle .bar {
+            width: 30px;
+            height: 3px;
+            background-color: var(--gold-light);
+            transition: 0.3s;
+        }
 
         /* Slideshow Hero Section */
         .hero {
@@ -130,20 +116,21 @@
         }
         .slides {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0; transition: opacity 1s ease-in-out;
+            opacity: 0; transition: opacity 1.5s ease-in-out, transform 5s linear;
             background-size: cover; background-position: center;
+            transform: scale(1.05); /* Efek zoom tipis */
         }
-        .slides.active { opacity: 0.4; } /* Opacity agar teks terbaca */
+        .slides.active { opacity: 0.4; transform: scale(1); } 
         .hero-content { position: relative; z-index: 10; padding: 20px; }
         .hero-content h1 { font-size: 3rem; margin-bottom: 10px; }
         .hero-content h2 { font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 300; -webkit-text-fill-color: var(--gold-light); }
 
         /* Sections General */
-        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; overflow: hidden; }
         .section-title { font-size: 2.5rem; margin-bottom: 40px; }
         
         /* Grid Layouts */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 40px;}
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
         /* Cards */
@@ -153,7 +140,7 @@
             padding: 30px;
             border-radius: 8px;
             text-align: center;
-            transition: 0.3s;
+            transition: all 0.4s ease;
         }
         .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2); }
         .card h3 { font-size: 1.5rem; margin-bottom: 15px; }
@@ -170,6 +157,22 @@
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+        /* Animasi Scroll (Fade In & Slide Up) */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Delay bertahap untuk grid items */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.5s; }
+
         /* Footer & Contact */
         footer {
             background: #050505; border-top: 1px solid var(--gold-dark); padding: 40px 20px; text-align: center; margin-top: 50px;
@@ -177,10 +180,28 @@
         .contact-info { margin: 20px 0; font-size: 1.1rem; }
         .contact-info span { color: var(--gold-light); display: block; margin: 10px 0; }
 
-        /* Responsiveness */
+        /* Responsiveness & Mobile Menu */
         @media (max-width: 768px) {
-            header { flex-direction: column; padding: 15px; }
-            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+            header, header.scrolled { padding: 15px 20px; }
+            .menu-toggle { display: flex; }
+            nav ul {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(13, 13, 13, 0.98);
+                border-bottom: 1px solid var(--gold-dark);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-out;
+                gap: 0;
+            }
+            nav ul.active {
+                max-height: 400px; /* Membuka menu secara halus */
+            }
+            nav ul li { text-align: center; border-top: 1px solid rgba(197, 160, 89, 0.2); }
+            nav ul li a { display: block; padding: 15px; }
             .grid-2 { grid-template-columns: 1fr; }
             .hero-content h1 { font-size: 2rem; }
         }
@@ -189,8 +210,11 @@
 <body>
 
     <!-- Header & Navigasi -->
-  <header>
-        <a href="#" class="logo">FSP ATTORNEY</a> <!-- Teks bisa dipersingkat sedikit agar pas di HP -->
+    <header id="main-header">
+        <!-- LOGO -->
+        <a href="#" class="logo-link">
+            <img src="img/logo.gif" class="logo-image" alt="Logo FSP">
+        </a>
         
         <!-- Tombol Hamburger untuk Layar HP -->
         <div class="menu-toggle" id="mobile-menu">
@@ -214,13 +238,11 @@
 
     <!-- Hero / Slideshow -->
     <section id="beranda" class="hero">
-        <!-- Ganti URL gambar dengan gambar asli/kantor Anda -->
-       
-		<div class="slides active" style="background-image: url('img/Slide1.jpg');"></div>
-<div class="slides" style="background-image: url('img/slide1.jpg');"></div>
-<div class="slides" style="background-image: url('img/slide2.jpg');"></div>
-		
-        <div class="hero-content">
+        <div class="slides active" style="background-image: url('img/Slide1.jpg');"></div>
+        <div class="slides" style="background-image: url('img/slide1.jpg');"></div>
+        <div class="slides" style="background-image: url('img/slide2.jpg');"></div>
+        
+        <div class="hero-content fade-in">
             <h1>FSP ATTORNEY AT LAW</h1>
             <h2>Advocate & Financial Law Specialist</h2>
         </div>
@@ -228,13 +250,22 @@
 
     <!-- Profil Section -->
     <section id="profil">
-        <h2 class="section-title">Profil Advokat</h2>
+        <h2 class="section-title fade-in">Profil Advokat</h2>
         <div class="grid-2">
-            <div>
-                <!-- Tempat Foto Profil. Ganti src dengan foto asli -->
+            <div class="fade-in delay-1">
                 <img src="img/profil.jpg" alt="Sendhy Pratama" style="width: 100%; border-radius: 8px; border: 2px solid var(--gold-dark);">
             </div>
-            <div class="profile-info">
+            <div class="profile-info fade-in delay-2">
+                <h3>Farhan Syathir S.H., M.H.</h3>
+                <p class="titles"></p>
+                <p>Spesialis dalam hukum keuangan dan advokasi profesional. Kami berdedikasi untuk memberikan layanan hukum terbaik dengan standar etika tinggi, memastikan hak dan keadilan klien selalu menjadi prioritas utama.</p>
+            </div>
+        </div>
+         <div class="grid-2">
+            <div class="fade-in delay-1">
+                <img src="img/profil2.jpg" alt="Sendhy Pratama" style="width: 100%; border-radius: 8px; border: 2px solid var(--gold-dark);">
+            </div>
+            <div class="profile-info fade-in delay-2">
                 <h3>SENDHY PRATAMA</h3>
                 <p class="titles">S.H., M.H., CPM., CCLE., CFTR., CPLA., CIRP., CIRM., CTMP., C.Neg</p>
                 <p>Spesialis dalam hukum keuangan dan advokasi profesional. Kami berdedikasi untuk memberikan layanan hukum terbaik dengan standar etika tinggi, memastikan hak dan keadilan klien selalu menjadi prioritas utama.</p>
@@ -244,17 +275,17 @@
 
     <!-- Penanganan Kasus -->
     <section id="kasus">
-        <h2 class="section-title">Penanganan Kasus</h2>
+        <h2 class="section-title fade-in">Penanganan Kasus</h2>
         <div class="grid-3">
-            <div class="card">
+            <div class="card fade-in delay-1">
                 <h3>Hukum Perusahaan</h3>
                 <p>Pendampingan legalitas, akuisisi, merger, dan penyelesaian sengketa perusahaan secara profesional.</p>
             </div>
-            <div class="card">
+            <div class="card fade-in delay-2">
                 <h3>Hukum Keuangan & Perbankan</h3>
                 <p>Spesialisasi dalam restrukturisasi utang, sengketa perbankan, dan investigasi keuangan.</p>
             </div>
-            <div class="card">
+            <div class="card fade-in delay-3">
                 <h3>Hukum Pidana Umum & Khusus</h3>
                 <p>Pendampingan klien dalam proses penyelidikan, penyidikan, hingga persidangan di pengadilan.</p>
             </div>
@@ -263,17 +294,17 @@
 
     <!-- Susunan Pengurus -->
     <section id="pengurus">
-        <h2 class="section-title">Susunan Pengurus</h2>
+        <h2 class="section-title fade-in">Susunan Pengurus</h2>
         <div class="grid-3">
-            <div class="card">
+            <div class="card fade-in delay-1">
                 <h3>Sendhy Pratama</h3>
                 <p>Managing Partner / Founder</p>
             </div>
-            <div class="card">
+            <div class="card fade-in delay-2">
                 <h3>Nama Pengurus 2</h3>
                 <p>Senior Associate</p>
             </div>
-            <div class="card">
+            <div class="card fade-in delay-3">
                 <h3>Nama Pengurus 3</h3>
                 <p>Legal Consultant</p>
             </div>
@@ -282,14 +313,14 @@
 
     <!-- Testimoni -->
     <section id="testimoni">
-        <h2 class="section-title">Testimoni Klien</h2>
+        <h2 class="section-title fade-in">Testimoni Klien</h2>
         <div class="grid-3">
-            <div class="card">
+            <div class="card fade-in delay-1">
                 <p><i>"Layanan yang sangat profesional dan solutif. Masalah hukum perusahaan kami terselesaikan dengan efektif."</i></p>
                 <br>
                 <h3 style="font-size: 1.1rem;">- PT. Maju Bersama</h3>
             </div>
-            <div class="card">
+            <div class="card fade-in delay-2">
                 <p><i>"FSP Attorney At Law memberikan pendampingan yang luar biasa dalam sengketa keuangan kami."</i></p>
                 <br>
                 <h3 style="font-size: 1.1rem;">- Bpk. Ahmad</h3>
@@ -297,59 +328,91 @@
         </div>
     </section>
 
+    <!-- Berita -->
     <section id="berita">
-    <h2 class="section-title">Berita & Informasi</h2>
-    <p style="text-align:center;margin-bottom:20px;">
-        Simak ulasan hukum terbaru dari kanal kami.
-    </p>
+        <h2 class="section-title fade-in">Berita & Informasi</h2>
+        <p class="fade-in delay-1" style="text-align:center;margin-bottom:20px;">
+            Simak ulasan hukum terbaru dari kanal kami.
+        </p>
 
-    <div class="video-container">
-        <video controls preload="metadata" playsinline width="100%">
-            <source src="./vidio/hukum.mp4" type="video/mp4">
-            Browser Anda tidak mendukung HTML5 Video.
-        </video>
-    </div>
-</section>
+        <div class="video-container fade-in delay-2" style="max-width:900px; margin:0 auto; border-radius:12px; background:#000;">
+            <video controls preload="metadata" playsinline width="100%" style="width:100%; height:auto; border-radius:12px;">
+                <source src="./vidio/hukum.mp4" type="video/mp4">
+                Browser Anda tidak mendukung HTML5 Video.
+            </video>
+        </div>
+    </section>
 
-<style>
-.video-container{
-    max-width:900px;
-    margin:0 auto;
-}
-
-.video-container video{
-    width:100%;
-    height:auto;
-    border-radius:12px;
-    background:#000;
-}
-</style>
     <!-- Footer & Kontak -->
-    <footer id="kontak">
+    <footer id="kontak" class="fade-in">
         <h2>FSP ATTORNEY AT LAW</h2>
         <div class="contact-info">
             <span>📍 Ruko The Plaza Bukit Cimanggu City, Blok RKB No.6</span>
             <span>Jl. Bukit Cimanggu City Raya, Kel. Cibadak, Kec. Tanah Sareal, Kota Bogor - 16166</span>
             <span>
-    📞 <a href="https://wa.me/6281319999957?text=Halo%20FSP%20Attorney%20At%20Law,%20perkenalkan%20saya%20[Nama%20Anda].%20Saya%20membutuhkan%20bantuan%20hukum%20dan%20ingin%20menjadwalkan%20konsultasi%20dengan%20tim%20advokat." target="_blank" style="color: var(--gold-light); text-decoration: none; font-weight: bold;">+62 8131 99999 57</a>
-</span>
+                📞 <a href="https://wa.me/6281319999957?text=Halo%20FSP%20Attorney%20At%20Law,%20perkenalkan%20saya%20[Nama%20Anda].%20Saya%20membutuhkan%20bantuan%20hukum%20dan%20ingin%20menjadwalkan%20konsultasi%20dengan%20tim%20advokat." target="_blank" style="color: var(--gold-light); text-decoration: none; font-weight: bold;">+62 8131 99999 57</a>
+            </span>
         </div>
         <p style="font-size: 0.8rem; color: #666;">&copy; 2026 FSP Attorney At Law. All Rights Reserved.</p>
     </footer>
 
-    <!-- SCRIPT UNTUK SLIDESHOW -->
+    <!-- JS untuk FUNGSI ANIMASI, MENU & SLIDESHOW -->
     <script>
+        // 1. Script untuk Slideshow Hero
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slides');
         setInterval(() => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 5000); // Ganti gambar setiap 5 detik
+        }, 5000); 
+
+        // 2. Script untuk Header Mengecil & Scroll Animasi
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 3. Script untuk Toggle Menu Mobile
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = navMenu.querySelectorAll('li a');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Menutup menu saat klik salah satu link di HP
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // 4. Script Animasi Fade-In & Slide-Up saat Scroll (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.15, // Memicu animasi ketika 15% elemen terlihat di layar
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // Hanya dijalankan 1 kali saat muncul
+                }
+            });
+        }, observerOptions);
+
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(el => observer.observe(el));
     </script>
 
     <!-- SCRIPT UNTUK CRISP LIVE CHAT -->
-    <!-- PERHATIAN: Ganti 'MASUKKAN_WEBSITE_ID_CRISP_ANDA_DISINI' dengan Website ID dari akun Crisp Anda -->
     <script type="text/javascript">
         window.$crisp=[];
         window.CRISP_WEBSITE_ID="MASUKKAN_WEBSITE_ID_CRISP_ANDA_DISINI"; 
@@ -360,23 +423,6 @@
             d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
-<!-- SCRIPT MENU HAMBURGER -->
-    <script>
-        const menuToggle = document.querySelector('#mobile-menu');
-        const navMenu = document.querySelector('#nav-menu');
-        const navLinks = document.querySelectorAll('#nav-menu li a');
 
-        // Fungsi membuka/menutup menu saat tombol garis tiga diklik
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-
-        // Fungsi agar menu otomatis menutup sendiri saat salah satu link diklik
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-            });
-        });
-    </script>
 </body>
 </html>
